@@ -207,7 +207,7 @@ print(texto)
 
 **9)** El siguiente código crea y guarda un archivo separado por comas en su computadora, por favor no modifique lo que está antes de la parte de desarrollo. Deberá cargar este archivo desde su computadora a R, para esto ayúdece de la función getwd() para saber la localización de su directorio de trabajo, ya que en este se habrá guardado su archivo.
 
-Ocupe las funciones glimpse() y view() sobre el data frame y vea que ocurre. Tenga en cuenta que estas funciones son del paquete tidyverse (2pts):\
+Ocupe las funciones glimpse(), view() y summary() sobre el data frame y vea que ocurre. Tenga en cuenta que estas funciones son del paquete tidyverse (2pts):\
 
 ```{r}
 # Creación de un df
