@@ -20,7 +20,7 @@ Realice el desarrollo de estos ejercicios al interior del chunk correspondiente.
 
 Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Windows/Linux), Option + Shift + K (en macOS) o Help \> Keyboard Shortcuts Help. No olvide que puede retroceder en cualquier cambio que realice con Ctrl + Z.
 
-## **Ejercicios (20pts):**
+## **Ejercicios (21pts):**
 
 **1)** Dados los siguientes objetos. Cuál es la clase (class()) y el tipo (typeof()) de cada objeto ¿Ve alguna diferencia entre los resultados obtenidos con class() y con typeof()? ¿Qué significa que un objeto sea integer o double? **(2pts)**
 
@@ -133,7 +133,7 @@ h <- #???
 print(h)
 ```
 
-**5)** Genere dos vectores, un vector alpha con los números del 1 al 10 y un vectos beta de largo 5 con nombres de frutas. En base a estos responda **(4pts)**:\
+**5)** Genere dos vectores, un vector alpha con los números del 1 al 10 y un vectos beta de largo 5 con nombres de frutas. En base a estos responda **(5pts)**:\
 a- ¿Cómo puedo saber el largo de cada vector?\
 b- ¿Cómo puedo imprimir solo el primer elemento de cada vector? ¿Y el último?\
 c- ¿Cómo puedo remplazar el ultimo elemento del vector beta con otra fruta?\
@@ -222,20 +222,20 @@ v[6]
 print("Hola mundo')
 ```
 
-**7)** Genere los objetos numéricos a, b, c y d de tal manera que se cumpla que:\
+**7)** Genere los objetos numéricos aa, bb, cc y dd de tal manera que se cumpla que:\
 
--   a es mayor que b\
--   b es igual a c\
--   a es distinto a b\
--   a es menor o igual a d\
+-   aa es mayor que bb\
+-   bb es igual a cc\
+-   aa es distinto a bb\
+-   aa es menor o igual a dd\
 
 Demuéstrelo ocupando comparaciones lógicas de tal manera que el resultado sea TRUE **(2pts)**.
 
 ```{r}
-a <- #???
-b <- #???
-c <- #???
-d <- #???
+aa <- #???
+bb <- #???
+cc <- #???
+dd <- #???
   
 # Desarrollo:
 
