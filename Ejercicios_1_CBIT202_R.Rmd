@@ -1,7 +1,12 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
-# Ejercicios N°1: Conseptos basicos
+# Ejercicios N°1: Conceptos basicos
 
-## Introducción al Análisis Geoespacial CBIT202 CBIT202-18
+## Introducción al Análisis Geoespacial CBIT202-24
 
 La guía consta de **9** ejercicios de conceptos básicos de R, y esta diseñada para ser respondida en modo "visual". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'. **Está evaluación será revisada por pares.**
 
@@ -24,7 +29,7 @@ Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Window
 
 **1)** Dados los siguientes objetos. Cuál es la clase (class()) y el tipo (typeof()) de cada objeto ¿Ve alguna diferencia entre los resultados obtenidos con class() y con typeof()? ¿Qué significa que un objeto sea integer o double? **(2pts)**
 
-```{r}
+```{r HOla Mundo, include=FALSE}
 objeto_1 <- "HolaMundo"
 objeto_2 <- 1L
 objeto_3 <- 9.2
@@ -39,7 +44,7 @@ objeto_4 <- TRUE
 
 Si siente curriosidad por qué objetos tiene guardados en la memoria puede utilizar:
 
-```{r}
+```{r lista obj, echo=TRUE, message=FALSE}
 print("Objectos en memoria:")
 print(ls())
 print("Detalles de objectos en memoria:")
@@ -48,7 +53,7 @@ print(ls.str())
 
 **2)** Realice las siguientes operaciones aritméticas (con: +, -, *, /, ^, %%, %/%, sqrt(), log(), pi()). **(2pts)**
 
-```{r}
+```{r ej1, eval=FALSE, warning=FALSE, include=FALSE}
 numero_inicial <- 10.0 
 
 # divida numero_inicial por 2
@@ -81,7 +86,7 @@ obj_log_por_pi <- #???
 
 **3)**Borre de la memoria de R los objetos creados en las dos preguntas anteriores. Despues borre especificamente el objeto creado en el siguiente chunk (vea la función rm() y sus ejemplos) **(2pts)**.
 
-```{r}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 # Objeos en memoria:
 ls()
 
@@ -107,7 +112,7 @@ f- La multiplicación de los valores del vector anterior (e) por 5\
 g- Al vector anterior (f) agréguele el valor 77\
 h- Genera la suma acumulativa de los valores de un vector con los números enteros del 2 al 20 (vea cumsum())
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 a <- #???
 print(a)
 
@@ -145,7 +150,7 @@ h- ¿Cómo puedo mostrar los valores superiores o iguales a 8 en el vector alpha
 i- ¿Cómo puedo generar con sample() una muestra de tamaño 5 con remplazo de alpha y beta?
 l- ¿Cómo, con sample(), puedo revolver aleatoriamente el orden de los datos del vector alpha y beta?
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 alpha <- #???
 beta <- #???
   
@@ -184,7 +189,7 @@ beta <- #???
 
 **6)** El siguiente código contiene 8 errores, corríjalos **(2pts)**:
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 # Desarrollo
 # Error 1
 mi_variable1 <- 10
@@ -231,7 +236,7 @@ print("Hola mundo')
 
 Demuéstrelo ocupando comparaciones lógicas de tal manera que el resultado sea TRUE **(2pts)**.
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 a <- #???
 b <- #???
 c <- #???
