@@ -1,7 +1,8 @@
 ---
 output:
-  pdf_document: default
+  word_document: default
   html_document: default
+  pdf_document: default
 ---
 
 # Ejercicios N°1: Conceptos basicos
@@ -236,20 +237,12 @@ print("Hola mundo')
 
 Demuéstrelo ocupando comparaciones lógicas de tal manera que el resultado sea TRUE **(2pts)**.
 
-<<<<<<< HEAD
-```{r eval=FALSE, include=FALSE}
-a <- #???
-b <- #???
-c <- #???
-d <- #???
-=======
 ```{r}
 aa <- #???
 bb <- #???
 cc <- #???
 dd <- #???
->>>>>>> da7c269dc704dee16ecc2669b9dd1920efd5e013
-  
+
 # Desarrollo:
 
 
