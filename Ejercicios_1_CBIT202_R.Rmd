@@ -1,11 +1,8 @@
 ---
-output:
-  word_document: default
-  html_document: default
-  pdf_document: default
+output: pdf_document
 ---
 
-# Ejercicios N°1: Conceptos basicos
+# Ejercicios N°1: Conceptos básicos
 
 ## Introducción al Análisis Geoespacial CBIT202-24
 
@@ -13,7 +10,7 @@ La guía consta de **9** ejercicios de conceptos básicos de R, y esta diseñada
 
 Realice el desarrollo de estos ejercicios al interior del chunk correspondiente. Si necesita escribir hágalo ocupando #, esto es recomendable para aclarar qué hace su código. Puede ayudarse de inteligencia artificial para investigar sobre el funcionamiento de funciones o investigar, pero resuelva las preguntas en base a su propio conocimiento e investigación. Recuerde que puede ocupar ? o F1 para saber más información sobre las funciones, paquetes instalados y datos contenidos en R base.
 
-```{r}
+```{r Ejem, eval=FALSE, echo=TRUE}
 # Por ejemplo:
 
 # Funcion
@@ -30,7 +27,7 @@ Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Window
 
 **1)** Dados los siguientes objetos. Cuál es la clase (class()) y el tipo (typeof()) de cada objeto ¿Ve alguna diferencia entre los resultados obtenidos con class() y con typeof()? ¿Qué significa que un objeto sea integer o double? **(2pts)**
 
-```{r HOla Mundo, include=FALSE}
+```{r Ejer1, eval=FALSE, echo=TRUE}
 objeto_1 <- "HolaMundo"
 objeto_2 <- 1L
 objeto_3 <- 9.2
@@ -45,16 +42,16 @@ objeto_4 <- TRUE
 
 Si siente curriosidad por qué objetos tiene guardados en la memoria puede utilizar:
 
-```{r lista obj, echo=TRUE, message=FALSE}
+```{r ListaObj, eval=FALSE, echo=TRUE}
 print("Objectos en memoria:")
 print(ls())
 print("Detalles de objectos en memoria:")
 print(ls.str())
 ```
 
-**2)** Realice las siguientes operaciones aritméticas (con: +, -, *, /, ^, %%, %/%, sqrt(), log(), pi()). **(2pts)**
+**2)** Realice las siguientes operaciones aritméticas (con: +, -, \*, /, \^, %%, %/%, sqrt(), log(), pi()). **(2pts)**
 
-```{r ej1, eval=FALSE, warning=FALSE, include=FALSE}
+```{r Ejer2, eval=FALSE, echo=TRUE}
 numero_inicial <- 10.0 
 
 # divida numero_inicial por 2
@@ -87,7 +84,7 @@ obj_log_por_pi <- #???
 
 **3)**Borre de la memoria de R los objetos creados en las dos preguntas anteriores. Despues borre especificamente el objeto creado en el siguiente chunk (vea la función rm() y sus ejemplos) **(2pts)**.
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+```{r Ejer3, eval=FALSE, echo=TRUE}
 # Objeos en memoria:
 ls()
 
@@ -102,7 +99,6 @@ rm(???)
 
 ```
 
-
 **4)** Genere vectores que contengan **(2pts)**:\
 a- 25 veces la frase "Hola Mundo".\
 b- Los números pares entre 0 y 100, incluyendo 100.\
@@ -113,7 +109,7 @@ f- La multiplicación de los valores del vector anterior (e) por 5\
 g- Al vector anterior (f) agréguele el valor 77\
 h- Genera la suma acumulativa de los valores de un vector con los números enteros del 2 al 20 (vea cumsum())
 
-```{r eval=FALSE, include=FALSE}
+```{r Ejer4, eval=FALSE, echo=TRUE}
 a <- #???
 print(a)
 
@@ -148,10 +144,9 @@ e- ¿Se pueden combiar estos dos vectores en un único objeto? Demuéstrelo. ¿E
 f- ¿Con qué función puedo ver un resumen estadístico de estos vectores?\
 g- ¿Cómo puedo ordenar los valores de ambos vectores de menor a mayor o de la A a la Z? ¿Y de la manera contraria? (Pista: revise la función sort() y sus argumentos)\
 h- ¿Cómo puedo mostrar los valores superiores o iguales a 8 en el vector alpha ocupando la función which y []?\
-i- ¿Cómo puedo generar con sample() una muestra de tamaño 5 con remplazo de alpha y beta?
-l- ¿Cómo, con sample(), puedo revolver aleatoriamente el orden de los datos del vector alpha y beta?
+i- ¿Cómo puedo generar con sample() una muestra de tamaño 5 con remplazo de alpha y beta? l- ¿Cómo, con sample(), puedo revolver aleatoriamente el orden de los datos del vector alpha y beta?
 
-```{r eval=FALSE, include=FALSE}
+```{r Ejer5, eval=FALSE, echo=TRUE}
 alpha <- #???
 beta <- #???
   
@@ -190,7 +185,7 @@ beta <- #???
 
 **6)** El siguiente código contiene 8 errores, corríjalos **(2pts)**:
 
-```{r eval=FALSE, include=FALSE}
+```{r Ejer6, eval=FALSE, echo=TRUE}
 # Desarrollo
 # Error 1
 mi_variable1 <- 10
@@ -237,7 +232,7 @@ print("Hola mundo')
 
 Demuéstrelo ocupando comparaciones lógicas de tal manera que el resultado sea TRUE **(2pts)**.
 
-```{r}
+```{r Ejer7, eval=FALSE, echo=TRUE}
 aa <- #???
 bb <- #???
 cc <- #???
@@ -250,9 +245,9 @@ dd <- #???
 
 ```
 
-**8)** Use paste() para escribir el siguiente texto "hola estrellitas el mundo les dice hola", con un espacio de separación entre palabras. Repita el proceso con las siguientes separaciones: "/", ".\_." y "\U1F60A". Después ocupe paste0() ¿en qué se diferencia paste() y paste0()? **(2pts)**
+**8)** Use paste() para escribir el siguiente texto "hola estrellitas el mundo les dice hola", con un espacio de separación entre palabras. Repita el proceso con las siguientes separaciones: "/" y ".\_.". Después ocupe paste0() ¿en qué se diferencia paste() y paste0()? **(2pts)**
 
-```{r}
+```{r Ejer8, eval=FALSE, echo=TRUE}
 # Ejemplo
 texto <-paste('Hola', 'Mundo', sep = "")
 print(texto)
@@ -264,14 +259,13 @@ print(texto)
 
 ```
 
-
 **9)** Diga cuáles son las variables del data frame "trees" (contenido en R base), en qué unidades de medida estan cada una y cuál es la fuente de los datos. Ocupe la función colnames() para saber el nombre de las columnas de data frame y nrow() para saber la cantidad de observaciones.
 
 Ocupe las funciones glimpse(), view() y summary() sobre el data frame y vea que ocurre. Tenga en cuenta que estas funciones son del paquete tidyverse (cárguelo).
 
-Además, usé [] y comparaciones lógicas para saber a través de un vector booleano (TRUE/FALSE) cuáles árboles son mayores a 80. **(2pts)**
+Además, usé [ ] y comparaciones lógicas para saber a través de un vector booleano (TRUE/FALSE) cuáles árboles son mayores a 80. **(2pts)**
 
-```{r}
+```{r Ejer9, eval=FALSE, echo=TRUE}
 # Data frame de arboles:
 print(trees)
 # Desarrollo:
@@ -281,19 +275,19 @@ print(trees)
 
 Si siente curiosidad por los sets de datos contenidos en R base puede correr la siguiente línea de código para ver todos los sets de datos.
 
-```{r}
+```{r SetsDatos, eval=FALSE, echo=TRUE}
 data(package = 'datasets')
 
 ```
 
 **Bonus:** Genere una función que, al entregarle los valors a y b, siendo estos los catetos de un triángulo rectángulo, calcule el valor de la hipotenusa. **(0pts)**
 
-```{r}
+```{r Bonus, eval=FALSE, echo=TRUE}
 # Desarrollo:
+FunPitagoras <- function(){
+  #???
+}
 
+FunPitagoras(3,4)
 
 ```
-
-
-
-
