@@ -6,9 +6,9 @@ output: pdf_document
 
 ## Introducción al Análisis Geoespacial CBIT202-24
 
-La guía consta de **9** ejercicios de conceptos básicos de R, y esta diseñada para ser respondida en modo "visual". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'. **Está evaluación será revisada por pares.**
+La guía consta de **9** ejercicios de conceptos básicos de R. Esta será entregada en formato PDF y deberá ser recreada en rmarkdwon, poniendo como nombre de alchivo "Ejer1_apellido_nombre.Rmd". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'.
 
-Realice el desarrollo de estos ejercicios al interior del chunk correspondiente. Si necesita escribir hágalo ocupando #, esto es recomendable para aclarar qué hace su código. Puede ayudarse de inteligencia artificial para investigar sobre el funcionamiento de funciones o investigar, pero resuelva las preguntas en base a su propio conocimiento e investigación. Recuerde que puede ocupar ? o F1 para saber más información sobre las funciones, paquetes instalados y datos contenidos en R base.
+Realice el desarrollo de estos ejercicios al interior del chunk correspondiente. Si necesita escribir hágalo ocupando #, esto es recomendable para aclarar el funcionamiento de su código. Puede ayudarse de inteligencia artificial para investigar sobre el funcionamiento de funciones o investigar, pero resuelva las preguntas en base a su propio conocimiento e investigación. Recuerde que puede ocupar ? o F1 para saber más información sobre las funciones, paquetes instalados y datos contenidos en R base.
 
 ```{r Ejem, eval=FALSE, echo=TRUE}
 # Por ejemplo:
@@ -24,6 +24,13 @@ Realice el desarrollo de estos ejercicios al interior del chunk correspondiente.
 Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Windows/Linux), Option + Shift + K (en macOS) o Help \> Keyboard Shortcuts Help. No olvide que puede retroceder en cualquier cambio que realice con Ctrl + Z.
 
 ## **Ejercicios (21pts):**
+
+***Indique su nombre:***
+
+```{r nombre, eval=FALSE, echo=TRUE}
+# Nombre alumno:
+
+```
 
 **1)** Dados los siguientes objetos. Cuál es la clase (class()) y el tipo (typeof()) de cada objeto ¿Ve alguna diferencia entre los resultados obtenidos con class() y con typeof()? ¿Qué significa que un objeto sea integer o double? **(2pts)**
 
