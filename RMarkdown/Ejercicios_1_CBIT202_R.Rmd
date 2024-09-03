@@ -19,6 +19,7 @@ Realice el desarrollo de estos ejercicios al interior del chunk correspondiente.
 ?stats()
 # Datos
 ?iris()
+
 ```
 
 Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Windows/Linux), Option + Shift + K (en macOS) o Help \> Keyboard Shortcuts Help. No olvide que puede retroceder en cualquier cambio que realice con Ctrl + Z.
@@ -43,8 +44,6 @@ objeto_4 <- TRUE
 # Desarrollo
 
 
-
-
 ```
 
 Si siente curriosidad por qué objetos tiene guardados en la memoria puede utilizar:
@@ -62,7 +61,7 @@ print(ls.str())
 numero_inicial <- 10.0 
 
 # divida numero_inicial por 2
-obj_divicion <- #???
+obj_divicion <- numero_inicial / 2
 
 # obtenga el resto de la división de numero_inicial por 2
 obj_resto <- #???

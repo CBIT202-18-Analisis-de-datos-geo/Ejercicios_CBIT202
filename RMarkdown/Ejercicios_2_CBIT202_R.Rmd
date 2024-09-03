@@ -2,11 +2,11 @@
 
 ## Introducción al Análisis de Datos Geoespaciales CBIT202-18
 
-La guía consta de **XX** ejercicios de manejo de datos en formato data frame, y esta diseñada para ser respondida en modo "visual". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'. **Está evaluación será revisada por pares.**
+La guía consta de **XX** ejercicios de conceptos básicos de R. Esta será entregada en formato PDF y deberá ser recreada en rmarkdwon, poniendo como nombre de alchivo "Ejer1_apellido_nombre.Rmd". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'.
 
 Realice el desarrollo de estos ejercicios al interior del chunk correspondiente. Si necesita escribir hágalo ocupando #, esto es recomendable para aclarar que hace su código. Puede ayudarse de inteligencia artificial para investigar sobre el funcionamiento de funciones, pero resuelva las preguntas en base a su propio conocimiento e investigación. Recuerde que puede ocupar ? para saber más información sobre las funciones, paquetes instalados y datos contenidos en R base.
 
-```{r}
+```{r  Ejem, eval=FALSE, echo=TRUE}
 # Por ejemplo:
 
 # Funcion
@@ -21,22 +21,33 @@ Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Window
 
 ## **Ejercicios (XXpts):**
 
+***Indique su nombre:***
+
+```{r nombre, eval=FALSE, echo=TRUE}
+# Nombre alumno:
+
+```
+
 Los ejercicios de esta guía requieren de paquete "datos", el cual contiene sets de datos de distintos paquetes, incluyendo R base, traducidos al español. Por favor corra rl siguiente código para instalarlo y llamarlo antes de continuer con la guía.
 
-```{r}
+```{r  datos, eval=FALSE, echo=TRUE}
 install.packages("datos") # instalar (solo se hace una vez, si lo tiene instalado comente esta linea)
 
 library(datos) # llamar
 ```
 
-**1)** Re-escriba el siguiente código con el uso de la pipa ( %>% o |> ). **(2pts)**
+**1)** Re-escriba el siguiente código con el uso de la pipa ( %\>% o \|\> ). **(2pts)**
 
-```{r}
-# resumen del data frame
+```{r  Ejer1, eval=FALSE, echo=TRUE}
+# resumen de un data frame
 glimpse(diamantes)
 
 # Con %>% :
 
+# la desviación estandar redondeada de la raiz cuadrada del logaritmo de los numeros del 0 al 60 de 5 en 5.
+round(sd(sqrt(log(seq(0, 60, by = 5)))), 3)
+
+# Con %>% :
 
 
 # contar los diamantes por categoria
@@ -47,7 +58,7 @@ count(diamantes, corte)
 
 
 # filtrar los diamantes pequeños
-pequeños <- filter(diamantes, quilate < 3)
+filter(diamantes, quilate < 3)
 
 # Con %>% :
 
@@ -76,12 +87,11 @@ view(summarise(group_by(diamantes, corte), media_precio = mean(precio, na.rm = T
 
 ```
 
-
-**1)** Instale, si es necesario, y llame el paquete: "tidyverse" ¿Qué significa el aviso que entrega el paquete tidyverse sobre conflictos? ¿Cómo puedo asegurarme de estar llamando la función "filter()" del paquete tidyverse sabiendo que el paquete stats (R base) contiene una función con el mismo nombre? ¿Y como se utilizaria "filter()" del paquete stats (no es necesario usarla, solo escribirla)?
+**2)** Instale, si es necesario, y llame el paquete: "tidyverse" ¿Qué significa el aviso que entrega el paquete tidyverse sobre conflictos? ¿Cómo puedo asegurarme de estar llamando la función "filter()" del paquete tidyverse sabiendo que el paquete stats (R base) contiene una función con el mismo nombre? ¿Y como se utilizaria "filter()" del paquete stats (no es necesario usarla, solo escribirla)?
 
 Para el data frame 'trees', ocupe la función filter() de tidyverse para saber cuántos árboles poseen una altura mayor a 80. **(2pt)**
 
-```{r}
+```{r Ejer2, eval=FALSE, echo=TRUE}
 # Desarrollo: 
 
 
@@ -90,11 +100,11 @@ Para el data frame 'trees', ocupe la función filter() de tidyverse para saber c
 
 ```
 
-**2)** El siguiente código crea y guarda un archivo separado por comas en su computadora, por favor NO modifique lo que está antes de la parte de desarrollo. Carge este archivo desde su computadora a R, para esto ayúdece de la función getwd() para saber la localización de su directorio de trabajo, ya que en este se habrá guardado su archivo.
+**3)** El siguiente código crea y guarda un archivo separado por comas en su computadora, por favor NO modifique lo que está antes de la parte de desarrollo. Carge este archivo desde su computadora a R, para esto ayúdece de la función getwd() para saber la localización de su directorio de trabajo, ya que en este se habrá guardado su archivo.
 
 Explique como se crean las variables del data frame 'df_creado', que hace cada función en la creación de 'df_creado'. **(2pts)**
 
-```{r}
+```{r Ejer3, eval=FALSE, echo=TRUE}
 # Creación de un df
 df_creado <- data.frame(ID = c(1:1000),
                  arboles = sample(c('roble', 'rauli', 'coigue'), size = 1000, replace = TRUE),
@@ -118,9 +128,9 @@ print(df_leido)
 
 ```
 
-**3)** Mencione las 3 características de los datos ordenados y diga por qué el data frame table2 no se encuentra ordenado, en comparación con table1, que si lo esta. **(2pts)**
+**4)** Mencione las 3 características de los datos ordenados y diga por qué el data frame table2 no se encuentra ordenado, en comparación con table1, que si lo esta. **(2pts)**
 
-```{r}
+```{r Ejer4, eval=FALSE, echo=TRUE}
 # Data frame ordenado:
 print(table1)
 
@@ -132,20 +142,18 @@ print(table2)
 
 ```
 
-**4)** Filtre (filter()), seleccione columnas (select()), ordene (arrange()) y agrupe (group_by() y summarise()), de tidyverse, en el siguiente data frame con datos de una Encuesta Social General de EE.UU., de tal manera que, responda las siguientes preguntas solo con la información solicitada. Tenga en cuenta que las preguntas pueden llegar a ser respondidas ocupando distintos caminos. Apollece ademas en otras funciones como: length(), first(), mean(), unique(), colnames(), etc). **(5pts)**
+**5)** Filtre (filter()), seleccione columnas (select()), ordene (arrange()) y agrupe (group_by() y summarise()), de tidyverse, en el siguiente data frame con datos de una Encuesta Social General de EE.UU., de tal manera que, responda las siguientes preguntas solo con la información solicitada. Tenga en cuenta que las preguntas pueden llegar a ser respondidas ocupando distintos caminos. Apollece ademas en otras funciones como: length(), first(), mean(), unique(), colnames(), etc). **(5pts)**
 
 a- ¿En qué años nacieron todas las personas cristianas encuestadas?\
 b- ¿Cuál es el valor más alto de horas viendo televición en la encuesta?\
 c- ¿Hay más personas casadas, divorciadas, viudas o que nuncan se han casado?\
 d- ¿Cuál es la edad media de los encuestados segun su religion? ¿Los integrantes de que religion en promedio son más jovenes?\
 e- ¿Cómo puedo quitarle la variable "partido" al data frame?\
-f- ¿Cómo puedo saber los valores unicos de la columa "anio" (año de la encuesta)?
-g- ¿La edad promedio es la misma entre encuestas de distinto año?  
-h- ¿Cuál es la edad de las 10 personas más jovens encuestadas? ¿Y cuál es su partido?
-i- ¿Ve algun patron entre los rangos de ingresos y la edad (puede ocupar la media, mediana o desviación estandar para responder)?    
-j- Hagace una pregunta sobre los datos (escrita explicitamente) y respondala con código.   
+f- ¿Cómo puedo saber los valores unicos de la columa "anio" (año de la encuesta)? g- ¿La edad promedio es la misma entre encuestas de distinto año?\
+h- ¿Cuál es la edad de las 10 personas más jovens encuestadas? ¿Y cuál es su partido? i- ¿Ve algun patron entre los rangos de ingresos y la edad (puede ocupar la media, mediana o desviación estandar para responder)?\
+j- Hagace una pregunta sobre los datos (escrita explicitamente) y respondala con código.
 
-```{r}
+```{r Ejer5, eval=FALSE, echo=TRUE}
 encuesta %>% glimpse()
 
 a <- #???
@@ -180,20 +188,99 @@ j <- #???
 print(j)
 
 
+# Correr para borrar los objetos en memoria (ahorar memoria)
+rm(list = ls())
 ```
-**4)** El base al data frame 'vuelos', que corresponden a datos temporales de todos los vuelos que despegaron de Nueva York durante 2013, genere las siguientes nuevas variables con mutate() o trasmute(), segun corresponda (Tome en cuenta que transmute genera nuevas variables, al igual que mutate, solo que no las integra en el data frame original, solo entrega un data frame con las nuevas variables. Para más información escriba: transmute()?):
 
-*No es necesario que guarde cada nuevo data frame como un objeto, solo imprimalo en consola.
+**6)** El base al data frame 'vuelos', que corresponden a datos temporales de todos los vuelos que despegaron de Nueva York durante 2013, genere las siguientes nuevas variables con mutate() o trasmute(), segun corresponda (Tome en cuenta que transmute genera nuevas variables, al igual que mutate, solo que no las integra en el data frame original, solo entrega un data frame con las nuevas variables. Para más información escriba: transmute()?):
 
-A- Primero, agregue al "vuelos", las variables ganancia (en terminos de la diferencia entre el atraso de salida y el atraso de llegada, es decir, cuantos minutos "recupera", o pierde, durante le vuelo), ganacia_por_hora (la ganancia por hora de vuelo) y velocidad (siendo la velocidad media del avion).    
-B- Genere las mismas nuevas variables que B, pero en un data frame que solo contenga estas nuevas variables.
-C-
-D-
+\*No es necesario que guarde cada nuevo data frame como un objeto, solo imprimalo en consola.
+
+-   A- Primero, agregue al "vuelos", las variables ganancia (en terminos de la diferencia entre el atraso de salida y el atraso de llegada, es decir, cuantos minutos "recupera", o pierde, durante el vuelo), ganacia_por_hora (la ganancia por hora de vuelo) y velocidad (siendo la velocidad media del avion).\
+
+-   B- Genere las mismas nuevas variables que B, pero en un data frame que solo contenga estas nuevas variables.\
+
+-   C- Genere un data frame que contenga la variable horario_salida y, en base a esta variable, dos nuevas variables que separen esta variable en la hora dentro de la que sale el avion y los minutos dentro de esa hora en las que sale el avion (pista: ocupe %/% y %%). Antes preguntese: ¿En que formato de datos esta la variable horario_salida?   
+
+-   D- Las variables horario_salida y salida_programada tienen un formato conveniente para leer, pero es difícil realizar cualquier cálculo con ellas porque no son realmente números continuos. Apoyandoce en el data frame del punto C, transforme estas variables, o genere dos nuevas variables que si sean continuas, como el número de minutos desde la medianoche. Y corra el histograma que agrupa la salida de vuelos por hora ¿Ve algun patron en el grafico? (**NO modifique el código del grafico**)    
+
+```{r Ejer6, eval=FALSE, echo=TRUE}
+# A:
+vuelos %>% mutate(
+  ganancia = #???
+  ganancia_hora = #???
+  velocidad = #???
+)
+```
+
+```{r Ejer6, eval=FALSE, echo=TRUE}
+# B:
+# Desarrollo:
+
+```
+
+```{r Ejer6, eval=FALSE, echo=TRUE}
+# C:
+transmute(vuelos,
+  horario_salida,
+  hora = #???
+  minuto = #???
+) 
+```
+
+```{r Ejer6, eval=FALSE, echo=TRUE}
+vuelos_salida <- transmute(vuelos,
+                           
+  horario_salida,
+  hora_salida = #???
+  minuto_salida = #???
+  minutos_continuos_salida = #???
+
+  salida_programada,
+  hora_programada = #???
+  minuto_programada = #???
+  minutos_continuos_programada = #???
+) 
+
+# Corra el plot una vez listo el data frame vuelos_salida
+ggplot(vuelos_salida, aes(x = minutos_continuos_salida)) + 
+  geom_histogram(binwidth = 60, fill = "lightblue", color = "black", boundary = 0) +
+  scale_x_continuous(breaks = seq(0, 1440, by = 180)) +
+  labs(title = "Vuelos agrupados por hora", x = "Minutos Continuos", y = "Frecuencia") +
+  theme_minimal()
+
+# ¿Ve algun patron en el grafico?
+# Desrrollo>:
+
+```
+
 
 
 ```{r}
-vuelos %>% glipse()
+# Correr para borrar los objetos en memoria (ahorar memoria)
+rm(list = ls())
+```
 
+
+**7)** Utilizando las funciones 'group_by()' y 'summarice()' genere los siguientes data frames en base al data frame "vuelos" (paquete: datos):
+
++ df1: Data frame con el número de vuelos, distancia promedio y atraso promedio, por destino desde Nueva York. Para calcular el número de vuelos explore la función especifica n(). A la hora de calcular las medias considere que hay datos faltantes (NA's) en los datos de vuelos, vea los argumentos de "mean()".
++ df2:
++ df3:
++ df4:
+
+
+```{r Ejer7, eval=FALSE, echo=TRUE}
+# df1
+# Desarrollo:
+vuelos %>% 
+  group_by(destino) %>% 
+  summarise(
+    conteo = n(),
+    distancia = mean(distancia, na.rm = F),
+    atraso = mean(atraso_llegada, na.rm = F)
+  ) %>% 
+  summary()
 
 ```
 
@@ -204,7 +291,7 @@ vuelos %>% glipse()
 
 Ocupe la función pivot_wider para transformar la tabla2 en datos ordenados
 
-```{r}
+```{r Bonus, eval=FALSE, echo=TRUE}
 # Desarrollo:
 # data frame no ordenado
 table2
