@@ -36,7 +36,8 @@ Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Window
 Los ejercicios de esta guía requieren del paquete "datos", el cual contiene conjuntos de datos de distintos paquetes, incluyendo R base, traducidos al español. Por favor, corra el siguiente código para instalarlo y cargarlo antes de continuar con la guía:
 
 ```{r datos, eval=FALSE, echo=TRUE, warning=FALSE}
-install.packages("datos") # instalar (solo se hace una vez, si lo tiene instalado comente esta linea)
+install.packages("datos") 
+# instalar (solo se hace una vez, si lo tiene instalado comente esta linea)
 
 library(datos) # llamar
 ```
@@ -49,7 +50,8 @@ glimpse(diamantes)
 
 # Con %>% :
 
-# la desviación estándar redondeada de la raíz cuadrada del logaritmo de los números del 0 al 60 de 5 en 5.
+# la desviación estándar redondeada de la raíz cuadrada del logaritmo de los
+# números del 0 al 60 de 5 en 5.
 round(sd(sqrt(log(seq(0, 60, by = 5)))), 3)
 
 # Con %>% :
@@ -69,14 +71,16 @@ filter(diamantes, quilate < 3)
 
 
 
-# seleccionar las variables x, y, z de pequeños y transformar su clase a numérico.
+# seleccionar las variables x, y, z de pequeños y transformar su clase a 
+# numérico.
 mutate(select(pequeños, x, y, z), across(c(x, y, z), as.numeric))
 
 # Con %>% :
 
 
 
-# seleccionar la variables precio de pequeños, transformar la columna en un vector (con unlist()) y calcular el promedio del precio.
+# seleccionar la variables precio de pequeños, transformar la columna en un 
+# vector (con unlist()) y calcular el promedio del precio.
 mean(unlist(select(pequeños, precio)))
 
 # Con %>% :
@@ -84,7 +88,8 @@ mean(unlist(select(pequeños, precio)))
 
 
 # calcular los promedios por corte y ver el resultado como una tabla con view().
-view(summarise(group_by(diamantes, corte), media_precio = mean(precio, na.rm = TRUE)))
+view(summarise(group_by(diamantes, corte), 
+               media_precio = mean(precio, na.rm = TRUE)))
 
 # Con %>% :
 
@@ -111,9 +116,15 @@ Explique c[omo se crean las variables del data frame 'df_creado', que hace cada 
 ```{r Ejer3, eval=FALSE, echo=TRUE}
 # Creación de un df
 df_creado <- data.frame(ID = c(1:1000),
-                 arboles = sample(c('roble', 'rauli', 'coigue'), size = 1000, replace = TRUE),
-                 DAP = rbeta(1000, shape1 = 2, shape = 5),
-                 estado_sanitario = factor(rbinom(1000, size = 1, prob = 0.2), levels = c(0, 1), labels = c('sano', 'enfermo')))
+                 arboles = sample(c('roble', 'rauli', 'coigue'), 
+                                  size = 1000, 
+                                  replace = TRUE),
+                 DAP = rbeta(1000, 
+                             shape1 = 2, 
+                             shape = 5),
+                 estado_sanitario = factor(rbinom(1000, size = 1, prob = 0.2), 
+                                           levels = c(0, 1), 
+                                           labels = c('sano', 'enfermo')))
 
 # Guardado del df en su computadora con el nombre df_ejercicio_7
 write.csv(df, 'df_ejercicio_7.csv')
@@ -253,9 +264,14 @@ vuelos_salida <- transmute(vuelos,
 
 # Corra el plot una vez listo el data frame vuelos_salida
 ggplot(vuelos_salida, aes(x = minutos_continuos_salida)) + 
-  geom_histogram(binwidth = 60, fill = "lightblue", color = "black", boundary = 0) +
+  geom_histogram(binwidth = 60, 
+                 fill = "lightblue", 
+                 color = "black", 
+                 boundary = 0) +
   scale_x_continuous(breaks = seq(0, 1440, by = 180)) +
-  labs(title = "Vuelos agrupados por hora", x = "Minutos Continuos", y = "Frecuencia") +
+  labs(title = "Vuelos agrupados por hora", 
+       x = "Minutos Continuos", 
+       y = "Frecuencia") +
   theme_minimal()
 
 # ¿Ve algun patron en el grafico?
