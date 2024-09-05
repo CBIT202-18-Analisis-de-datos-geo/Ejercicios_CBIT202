@@ -3,6 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
+
 # Ejercicios N°2: Trabajando con data frames
 
 ## Introducción al Análisis de Datos Geoespaciales CBIT202-18
@@ -65,7 +66,7 @@ count(diamantes, corte)
 
 
 # filtrar los diamantes pequeños
-filter(diamantes, quilate < 3)
+pequeños <- filter(diamantes, quilate < 3)
 
 # Con %>% :
 
@@ -96,6 +97,7 @@ view(summarise(group_by(diamantes, corte),
 
 
 ```
+
 **2)** Instale, si es necesario, y cargue el paquete "tidyverse". ¿Qué significa el aviso que entrega el paquete tidyverse sobre conflictos? ¿Cómo puedo asegurarme de estar llamando a la función filter() del paquete tidyverse sabiendo que el paquete stats (R base) contiene una función con el mismo nombre? ¿Y cómo se utilizaría filter() del paquete stats (no es necesario usarla, solo escribirla)?
 
 Para el data frame 'trees', utilice la función filter() de tidyverse para saber cuántos árboles poseen una altura mayor a 80. (**2 pts**)
@@ -161,16 +163,16 @@ print(table2)
 
 *Tome en cuenta que pueden haber datos faltantes (Na's) en vuelos a la hora de generar calculos como mean() y otros*
 
-a- ¿En qué años nacieron todas las personas cristianas encuestadas?
-b- ¿Cuál es el valor más alto de horas viendo televisión en la encuesta?
-c- ¿Hay más personas casadas, divorciadas, viudas o que nunca se han casado?
-d- ¿Cuál es la edad media de los encuestados según su religión? ¿Los integrantes de qué religión, en promedio, son más jóvenes?
-e- ¿Cómo puedo quitar la variable "partido" del data frame?
-f- ¿Cómo puedo saber los valores únicos de la columna "anio" (año de la encuesta)?
-g- ¿La edad promedio es la misma entre encuestas de distintos años?
-h- ¿Cuál es la edad de las 10 personas más jóvenes encuestadas? ¿Y cuál es su partido?
-i- ¿Ve algún patrón entre los rangos de ingresos y la edad (puede usar la media, mediana o desviación estándar para responder)?
-j- Formule una pregunta sobre los datos (escrita explícitamente) y respóndala con código.
+-   a- ¿En qué años nacieron todas las personas cristianas encuestadas?
+-   b- ¿Cuál es el valor más alto de horas viendo televisión en la encuesta?
+-   c- ¿Hay más personas casadas, divorciadas, viudas o que nunca se han casado?
+-   d- ¿Cuál es la edad media de los encuestados según su religión? ¿Los integrantes de qué religión, en promedio, son más jóvenes?
+-   e- ¿Cómo puedo quitar la variable "partido" del data frame?
+-   f- ¿Cómo puedo saber los valores únicos de la columna "anio" (año de la encuesta)?
+-   g- ¿La edad promedio es la misma entre encuestas de distintos años?
+-   h- ¿Cuál es la edad de las 10 personas más jóvenes encuestadas? ¿Y cuál es su partido?
+-   i- ¿Ve algún patrón entre los rangos de ingresos y la edad (puede usar la media, mediana o desviación estándar para responder)?
+-   j- Formule una pregunta sobre los datos (escrita explícitamente) y respóndala con código.
 
 ```{r Ejer5, eval=FALSE, echo=TRUE}
 encuesta %>% glimpse()
@@ -212,7 +214,7 @@ print(j)
 rm(list = ls())
 ```
 
-**6)** Basado en el data frame 'vuelos', correspondiente a datos de todos los vuelos que despegaron de Nueva York durante el año 2013, genere las siguientes nuevas variables con mutate() o trasmute(), segun corresponda (Tome en cuenta que transmute genera nuevas variables, al igual que mutate, solo que no las integra en el data frame original, solo entrega un data frame con las nuevas variables. Para más información escriba: transmute()?): (**4**)\
+**6)** Basado en el data frame 'vuelos', correspondiente a datos de todos los vuelos que despegaron de Nueva York durante el año 2013, genere las siguientes nuevas variables con mutate() o trasmute(), segun corresponda (Tome en cuenta que transmute genera nuevas variables, al igual que mutate, solo que no las integra en el data frame original, solo entrega un data frame con las nuevas variables. Para más información escriba: transmute()?): (**4pts**)\
 
 *No es necesario que guarde cada nuevo data frame como un objeto, solo imprimalo en consola*.\
 
@@ -287,9 +289,9 @@ rm(list = ls())
 
 **7)** Utilizando las funciones group_by() y summarise(), genere los siguientes data frames:
 
-+ df1: Con el data frame "vuelos", genere un data frame con el número de vuelos, distancia promedio y atraso promedio, por destino desde Nueva York. Para calcular el número de vuelos, explore la función específica n(). Al calcular las medias, considere que puede haber datos faltantes (NA's) en los datos de vuelos; vea los argumentos de mean() para manejar estos casos.
+-   df1: Con el data frame "vuelos", genere un data frame con el número de vuelos, distancia promedio y atraso promedio, por destino desde Nueva York. Para calcular el número de vuelos, explore la función específica n(). Al calcular las medias, considere que puede haber datos faltantes (NA's) en los datos de vuelos; vea los argumentos de mean() para manejar estos casos.
 
-+ df2: Con el data frame "clima", genere un data frame con los días con mayor temperatura media diaria por mes y origen. (2 pts)
+-   df2: Con el data frame "clima", genere un data frame con los días con mayor temperatura media diaria por mes y origen. (2 pts)
 
 ```{r Ejer7, eval=FALSE, echo=TRUE}
 # df1
