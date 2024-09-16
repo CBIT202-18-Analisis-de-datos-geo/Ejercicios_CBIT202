@@ -1,0 +1,143 @@
+---
+title: "Trabajo 3"
+author: "Joseba"
+date: "2024-09-11"
+output: pdf_document
+---
+
+# Ejercicios N°3: Visualizaciones
+
+## Introducción al Análisis Geoespacial CBIT202-24
+
+La guía consta de **XXXX** ejercicios de visualizaciones en R. Esta será entregada en formato PDF y deberá ser recreada en rmarkdwon, poniendo como nombre de alchivo "Ejer1_apellido_nombre.Rmd". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'.
+
+Realice el desarrollo de estos ejercicios al interior del chunk correspondiente. Si necesita escribir hágalo ocupando #, esto es recomendable para aclarar el funcionamiento de su código. Puede ayudarse de inteligencia artificial para investigar sobre el funcionamiento de funciones o investigar, pero resuelva las preguntas en base a su propio conocimiento e investigación. Recuerde que puede ocupar ? o F1 para saber más información sobre las funciones, paquetes instalados y datos contenidos en R base.
+
+```{r Ejem, eval=FALSE, echo=TRUE}
+# Por ejemplo:
+
+# Funcion
+?mean()
+# Paquete
+?stats()
+# Datos
+?iris()
+
+```
+
+Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Windows/Linux), Option + Shift + K (en macOS) o Help \> Keyboard Shortcuts Help. No olvide que puede retroceder en cualquier cambio que realice con Ctrl + Z.
+
+## **Ejercicios (XXpts):**
+
+***Indique su nombre:***
+
+```{r nombre, eval=FALSE, echo=TRUE}
+# Nombre alumno:
+
+```
+
+Los ejercicios de esta guía requieren del paquete “datos”, el cual contiene conjuntos de datos de distintos paquetes, incluyendo R base, traducidos al español. Y el paquete tidyverse. Por favor, corra el siguiente código para cargarlos antes de continuar con la guía:
+
+```{r paquete, eval=FALSE, echo=TRUE}
+library(datos)
+library(tidyverse)
+```
+
+Puede apoyarce en los siguientes links para realizar los ejercicios de esta guía:
+
+-   [R Graph Gallery](https://r-graph-gallery.com/)
+-   [Beautiful Plotting](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
+
+**1)** En base al data frame "trees", genere un histograma del ancho de los arboles con 6 bins (intervalos) sin el uso de ggplot2 (vea la función y hist() y sus argumentos), y otro histograma con ggplot2 (geom_histogram()). Escriba titulos en ambos ejes (con unidades de medida), un titulo general y un subtitulo. **(2pts)**
+
+```{r Ejer1, eval=FALSE, echo=TRUE}
+# Desarrollo:
+trees %>% glimpse()
+
+hist_sin_ggplot <- ???
+print(hist_sin_ggplot)
+  
+hist_con_ggplot <- ???
+print(hist_con_ggplot)
+```
+
+**2)** Realice las modificaciones solicitadas al siguiente grafico en base a datos de pinguinos de la estación Palmer, en la antartica Chilena.
+
+**Modificaciones:** + Agregue las geometrias geom_point y geom_smooth con las variables largo de aleta y la masa corporal, para los ejes X e Y respectivamente. + Agregele un titulo general y titulos de ejer adecuados. + Diferencie solo los puntos en forma y color según la especie de pinguino. + Modifique la trasparencia para que los puntos tengan una ligera trasparencia (10%). + Modifique el titulo de la leyenda para que diga "Especies", y posicionela en la parte inferior del grafico. + Ocupe la función scale_color_colorblind() de ggthemes para modificar los colores. En sus palabras ¿Qué hace esta función? ¿Cree que es importante? + Agregue algún tema que le paresca adecuado o agradable.
+
+```{r Ejer2, eval=FALSE, echo=TRUE}
+# Paquetes requeridos (instalelos antes de llamarlos)
+library(palmerpenguins)
+library(ggthemes)
+
+# Desarrollo:
+penguins %>% ggplot(aes(???)) +
+  geom_???
+  
+```
+
+**3)** En base a los datos de pinguinos ocupados en el ejercicio anterior realice los siguientes graficos:
+
+-   P1: Un grafico de barras (geom_bar()) para comparar la cantidad de pinguinos por especie.
+-   P2: Un grafico de caja y bigote para saber la distribución de masa corporal por especie. Con distintos rellenos por especie.
+-   P3: Un grafico de densidad (geom_density()) con un relleno por especie y una transparencia de 50%.
+-   P4: Un grafico de barras (geom_bar()) que muestre la proporción entre especies para cada isla muestreada (revise los argumentos de geom_bar y vea que hace position = "fill").
+
+```{r Ejer3, eval=FALSE, echo=TRUE}
+# Desarrollo:
+# P1:
+
+
+# P2:
+
+
+# P3:
+
+
+# P4:
+
+
+```
+
+
+**4)** En base al grafico realizado en el ejercicio 2 (pero solo con la reometria de puntos).  Separe el grafico en base a la isla en que fueron medidos los pinguinos y despues separelo en base a la isla y la especie de manera simultanea (vea facet_wrap() y facet_grid()). Tenga en cuenta que separar en este caso hace referencia a tener multiples paneles en el grafico. 
+
+```{r Ejer4, eval=FALSE, echo=TRUE}
+# Desarrollo:
+
+# Separado por isla:
+
+
+# Separado por isla y especie:
+
+
+```
+
+**5)** Corra el siguiente código para descargar los datos de uso de suelo para la región de los rios (catastro vegetacional de los ríos de CONAF), sin geometria. Junto con un archivo explicativo de las variables del catastro.
+
+```{r uso_suelo , eval=FALSE, echo=TRUE}
+
+library(sf)
+
+# Lee el archivo shapefile
+shapefile <- st_read("conuna_val.shp")
+```
+
+En base a este set de datos genere graficos que puedan responder las siguientes preguntas. Recuerde, existen mutiples respuestas correctas, pero a veces el camino más simple es el mejor.
+
+```{r ejer5 , eval=FALSE, echo=TRUE}
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+

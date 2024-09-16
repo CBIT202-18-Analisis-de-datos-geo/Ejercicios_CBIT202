@@ -6,7 +6,7 @@ output:
 
 # Ejercicios N°2: Trabajando con data frames
 
-## Introducción al Análisis de Datos Geoespaciales CBIT202-18
+## Introducción al Análisis de Datos Geoespaciales CBIT202-24
 
 La guía consta de **7 ejercicios** de conceptos básicos de R. Esta será entregada en formato PDF y deberá ser recreada en RMarkdwon, poniendo como nombre del alchivo "Ejer2_apellido_nombre.Rmd". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'.
 
@@ -53,7 +53,7 @@ glimpse(diamantes)
 
 # la desviación estándar redondeada de la raíz cuadrada del logaritmo de los
 # números del 0 al 60 de 5 en 5.
-round(sd(sqrt(log(seq(0, 60, by = 5)))), 3)
+round(sd(sqrt(log(seq(5, 60, by = 5)))), 3)
 
 # Con %>% :
 
@@ -66,7 +66,8 @@ count(diamantes, corte)
 
 
 # filtrar los diamantes pequeños
-pequeños <- filter(diamantes, quilate < 3)
+pequenos <- filter(diamantes, quilate < 3)
+
 
 # Con %>% :
 

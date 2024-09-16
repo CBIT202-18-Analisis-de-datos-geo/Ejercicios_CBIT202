@@ -141,7 +141,7 @@ h <- #???
 print(h)
 ```
 
-**5)** Genere dos vectores, un vector alpha con los números del 1 al 10 y un vectos beta de largo 5 con nombres de frutas. En base a estos responda **(5pts)**:\
+**5)** Genere dos vectores, un vector alpha con los números del 1 al 10 más el número 16 y un vectos beta de largo 5 con nombres de frutas. En base a estos responda **(5pts)**:\
 a- ¿Cómo puedo saber el largo de cada vector?\
 b- ¿Cómo puedo imprimir solo el primer elemento de cada vector? ¿Y el último?\
 c- ¿Cómo puedo remplazar el ultimo elemento del vector beta con otra fruta?\
@@ -150,7 +150,8 @@ e- ¿Se pueden combiar estos dos vectores en un único objeto? Demuéstrelo. ¿E
 f- ¿Con qué función puedo ver un resumen estadístico de estos vectores?\
 g- ¿Cómo puedo ordenar los valores de ambos vectores de menor a mayor o de la A a la Z? ¿Y de la manera contraria? (Pista: revise la función sort() y sus argumentos)\
 h- ¿Cómo puedo mostrar los valores superiores o iguales a 8 en el vector alpha ocupando la función which y []?\
-i- ¿Cómo puedo generar con sample() una muestra de tamaño 5 con remplazo de alpha y beta? l- ¿Cómo, con sample(), puedo revolver aleatoriamente el orden de los datos del vector alpha y beta?
+i- ¿Cómo puedo generar con sample() una muestra de tamaño 5 con remplazo de alpha y beta?\
+l- ¿Cómo con sample(), puedo revolver aleatoriamente el orden de los datos del vector alpha y beta?
 
 ```{r Ejer5, eval=FALSE, echo=TRUE}
 alpha <- #???
@@ -222,7 +223,7 @@ valor_maximo <- Max(runif(100, 0, 50))
 
 # Error 7
 # quiero el ultimo valor de v
-v <- 1:5
+v <- 5:1
 v[6]
 
 # Error 8
@@ -251,7 +252,7 @@ dd <- #???
 
 ```
 
-**8)** Use paste() para escribir el siguiente texto "hola estrellitas el mundo les dice hola", con un espacio de separación entre palabras. Repita el proceso con las siguientes separaciones: "/" y ".\_.". Después ocupe paste0() ¿en qué se diferencia paste() y paste0()? **(2pts)**
+**8)** Use paste() para escribir el siguiente texto "hola estrellitas el mundo les dice hola", con un espacio de separación entre palabras. Repita el proceso con las siguientes separaciones: "/" y ".\_.". Después ocupe paste0() sin cambiar el separador predeterminado ¿en qué se diferencia paste() y paste0()? **(2pts)**
 
 ```{r Ejer8, eval=FALSE, echo=TRUE}
 # Ejemplo
