@@ -9,9 +9,9 @@ output: pdf_document
 
 ## Introducción al Análisis Geoespacial CBIT202-24
 
-La guía consta de **XXXX** ejercicios de visualizaciones en R. Esta será entregada en formato PDF y deberá ser recreada en rmarkdwon, poniendo como nombre de alchivo "Ejer1_apellido_nombre.Rmd". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'.
+La guía consta de **6** ejercicios de visualizaciones en R. Esta será entregada en formato PDF y deberá ser recreada en rmarkdwon, poniendo como nombre de alchivo "Ejer1_apellido_nombre.Rmd". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'.
 
-Realice el desarrollo de estos ejercicios al interior del chunk correspondiente. Si necesita escribir hágalo ocupando #, esto es recomendable para aclarar el funcionamiento de su código. Puede ayudarse de inteligencia artificial para investigar sobre el funcionamiento de funciones o investigar, pero resuelva las preguntas en base a su propio conocimiento e investigación. Recuerde que puede ocupar ? o F1 para saber más información sobre las funciones, paquetes instalados y datos contenidos en R base.
+Realice el desarrollo de estos ejercicios al interior del chunk correspondiente. Si necesita escribir hágalo ocupando #, esto es recomendable para aclarar el funcionamiento de su código. Puede utilizar herramientas de inteligencia artificial para investigar sobre el funcionamiento de funciones o paquetes, pero resuelva las preguntas basándose en su propio conocimiento e investigación. Recuerde que puede ocupar ? o F1 para saber más información sobre las funciones, paquetes instalados y datos contenidos en R base.
 
 ```{r Ejem, eval=FALSE, echo=TRUE}
 # Por ejemplo:
@@ -43,12 +43,12 @@ library(datos)
 library(tidyverse)
 ```
 
-Puede apoyarce en los siguientes links para realizar los ejercicios de esta guía:
+Puede apoyarse en los siguientes links para realizar los ejercicios de esta guía:
 
 -   [R Graph Gallery](https://r-graph-gallery.com/)
 -   [Beautiful Plotting](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
 
-**1)** En base al data frame "trees", genere un histograma del ancho de los arboles con 6 bins (intervalos) sin el uso de ggplot2 (vea la función y hist() y sus argumentos), y otro histograma con ggplot2 (geom_histogram()). Escriba titulos en ambos ejes (con unidades de medida), un titulo general y un subtitulo. **(2pts)**
+**1)** En base al data frame "trees", genere un histograma del ancho de los arboles con 6 bins (intervalos) sin el uso de ggplot2 (vea la función "hist()" y sus argumentos), y otro histograma con ggplot2 ("geom_histogram()"). Escriba titulos en ambos ejes (con unidades de medida), un título general y un subtítulo. **(2pts)**
 
 ```{r Ejer1, eval=FALSE, echo=TRUE}
 # Desarrollo:
@@ -61,9 +61,17 @@ hist_con_ggplot <- ???
 print(hist_con_ggplot)
 ```
 
-**2)** Realice las modificaciones solicitadas al siguiente grafico en base a datos de pinguinos de la estación Palmer, en la antartica Chilena.
+**2)** Realice las modificaciones solicitadas al siguiente gráfico en base a datos de pinguinos de la estación Palmer, en la Antártica Chilena. **(2pts)**
 
-**Modificaciones:** + Agregue las geometrias geom_point y geom_smooth con las variables largo de aleta y la masa corporal, para los ejes X e Y respectivamente. + Agregele un titulo general y titulos de ejer adecuados. + Diferencie solo los puntos en forma y color según la especie de pinguino. + Modifique la trasparencia para que los puntos tengan una ligera trasparencia (10%). + Modifique el titulo de la leyenda para que diga "Especies", y posicionela en la parte inferior del grafico. + Ocupe la función scale_color_colorblind() de ggthemes para modificar los colores. En sus palabras ¿Qué hace esta función? ¿Cree que es importante? + Agregue algún tema que le paresca adecuado o agradable.
+**Modificaciones:**
+
+-   Agregue las geometrias geom_point y geom_smooth con las variables largo de aleta y la masa corporal, para los ejes X e Y respectivamente.
+-   Agregue un título general y títulos de ejes adecuados.
+-   Diferencie solo la geometria de puntos en forma y color según la especie de pinguino.
+-   Modifique la transparencia para que los puntos sean ligeramente translúcidos (20%).
+-   Modifique el titulo de la leyenda para que diga "Especies", y colóquela en la parte inferior del gráfico.
+-   Ocupe la función scale_color_colorblind() de ggthemes para modificar los colores. En sus palabras ¿Qué hace esta función? ¿Cree que es importante? (la función no requiere de argumentos y se agrega al grafico con +)
+-   Agregue algún tema que le paresca adecuado o agradable.
 
 ```{r Ejer2, eval=FALSE, echo=TRUE}
 # Paquetes requeridos (instalelos antes de llamarlos)
@@ -76,12 +84,12 @@ penguins %>% ggplot(aes(???)) +
   
 ```
 
-**3)** En base a los datos de pinguinos ocupados en el ejercicio anterior realice los siguientes graficos:
+**3)** En base a los datos de pinguinos ocupados en el ejercicio anterior realice los siguientes gráficos: **(2pts)**
 
--   P1: Un grafico de barras (geom_bar()) para comparar la cantidad de pinguinos por especie.
--   P2: Un grafico de caja y bigote para saber la distribución de masa corporal por especie. Con distintos rellenos por especie.
--   P3: Un grafico de densidad (geom_density()) con un relleno por especie y una transparencia de 50%.
--   P4: Un grafico de barras (geom_bar()) que muestre la proporción entre especies para cada isla muestreada (revise los argumentos de geom_bar y vea que hace position = "fill").
+-   P1: Un gráfico de barras (geom_bar()) para comparar la cantidad de pinguinos por especie.
+-   P2: Un gráfico de caja y bigotes para saber la distribución de masa corporal por especie. Con distintos rellenos por especie.
+-   P3: Un gráfico de densidad (geom_density()) con un relleno por especie y una transparencia de 50%.
+-   P4: Un gráfico de barras (geom_bar()) que muestre la proporción entre especies para cada isla muestreada (revise los argumentos de geom_bar() y observe el efecto de position = "fill").
 
 ```{r Ejer3, eval=FALSE, echo=TRUE}
 # Desarrollo:
@@ -99,7 +107,7 @@ penguins %>% ggplot(aes(???)) +
 
 ```
 
-**4)** En base al grafico realizado en el ejercicio 2 (pero solo con la reometria de puntos). Separe el grafico en base a la isla en que fueron medidos los pinguinos y despues separelo en base a la isla y la especie de manera simultanea (vea facet_wrap() y facet_grid()). Tenga en cuenta que separar en este caso hace referencia a tener multiples paneles en el grafico.
+**4)** Basado en el gráfico realizado en el ejercicio 2 (pero utilizando solo la geometría de puntos), separe el gráfico según la isla en la que fueron medidos los pingüinos y luego sepárelo simultáneamente por isla y especie (revise las funciones facet_wrap() y facet_grid()). Tenga en cuenta que "separar" en este caso se refiere a mostrar múltiples paneles en el gráfico. **(2pts)**
 
 ```{r Ejer4, eval=FALSE, echo=TRUE}
 # Desarrollo:
@@ -112,9 +120,9 @@ penguins %>% ggplot(aes(???)) +
 
 ```
 
-**5)** Corra el siguiente código para descargar los datos de uso de suelo para la provincia de Valdivia (catastro vegetacional de los ríos de CONAF), sin geometria, en su wording directory. Junto con un archivo explicativo de las variables del catastro.
+**5)** Ejecute el siguiente código para descargar los datos de uso de suelo para la provincia de Valdivia (catastro vegetacional de CONAF), sin geometria, en su wording directory. Junto con un archivo explicativo de las variables del catastro. **(4pts)**
 
-Si este codigo le genera problemas a la hora de la descarga, puede ser debido al formato RMarkdown. Pegue el código en la consolo a corralo.
+Si este codigo le genera problemas a la hora de la descarga, puede ser debido al formato RMarkdown. Pegue el código en la consola para ejecutarlo.
 
 ```{r uso_suelo , eval=FALSE, echo=TRUE}
 githubURL <- "https://raw.githubusercontent.com/CBIT202-18-Analisis-de-datos-geo/Ejercicios_CBIT202/main/archivos/uso_val.csv"
@@ -129,7 +137,7 @@ download.file(githubURL2, "readme_uso_val.pdf", mode = "wb")
 file.exists("readme_uso_val.pdf")
 ```
 
-En base a este set de datos genere graficos que puedan responder las siguientes preguntas. Recuerde, existen mutiples respuestas correctas, pero el camino más simple suele ser el mejor. Tambien tome en cuenta que las variables que se encuentran como ID suelen tener menor errores que las que se encuentran como texto, puede ocupar tanto las variables de ID como las de texto.
+En base a este set de datos genere gráficos que puedan responder las siguientes preguntas. Recuerde, existen múltiples respuestas correctas, pero el camino más simple suele ser el mejor. También tome en cuenta que las variables que se encuentran como variables ID suelen tener menor errores que las que se encuentran como texto, puede ocupar tanto las variables de ID como las de texto.
 
 Utilice cuando sea necesario las funciones: select(), filter(), arrange(), mutate(), group_by() y summarize(). Ademas de otras.
 
@@ -143,7 +151,7 @@ Pregunta 1: ¿Cuál es uso de suelo que presenta mayor cobertura en la provincia
 
 ```
 
-Pregunta 2: ¿Y la distribución de los tamaños de parche como es por uso? (Pista: ocupe geom_boxplot con outliers = F)
+Pregunta 2: ¿Cómo es la distribución de los tamaños de parche por uso? (Pista: ocupe geom_boxplot con outliers = F)
 
 ```{r ejer5 P2, eval=FALSE, echo=TRUE}
 # Pregunta 2:
@@ -157,16 +165,16 @@ Pregunta 3: ¿Cuál es la cobertura porcentual de cada subuso de bosque? (Pista:
 
 ```
 
-Pregunta 4: ¿Para bosques, en que combinación de cobertura y tipo forestal hay mayor número de parches? (Pista: ocupe geom_count())
+Pregunta 4: ¿Para bosques, en qué combinación de cobertura y tipo forestal hay un mayor número de parches? (Pista: ocupe geom_count())
 
 ```{r ejer5 P4, eval=FALSE, echo=TRUE}
 # Pregunta 4:
 
 ```
 
-**6)** Recree el siguiente grafico:
+**6)** Recree el siguiente grafico: **(4pts)**
 
-![Logo R](https://www.r-project.org/logo/Rlogo.png)
+![](https://raw.githubusercontent.com/CBIT202-18-Analisis-de-datos-geo/Ejercicios_CBIT202/main/archivos/ejer3_p6.png)
 
 *Con width puede modificar el ancho de geom_jitter y geom_boxplot*
 
@@ -178,9 +186,9 @@ penguins %>% glimpse()
 
 ```
 
-**Bonus** Al grafico anterior agregele un punto con la media.
+**Bonus** Al gráfico anterior agrégale un punto con la media. Como se ve en la imagen:
 
-![Logo R](https://www.r-project.org/logo/Rlogo.png)
+![](https://raw.githubusercontent.com/CBIT202-18-Analisis-de-datos-geo/Ejercicios_CBIT202/main/archivos/ejer3_bonus.png)
 
 ```{r bonus, eval=FALSE, echo=TRUE}
 
