@@ -133,45 +133,56 @@ En base a este set de datos genere graficos que puedan responder las siguientes 
 
 Utilice cuando sea necesario las funciones: select(), filter(), arrange(), mutate(), group_by() y summarize(). Ademas de otras.
 
-Pregunta 1: ¿Cuál es uso de suelo que presenta mayor cobertura en la provincia de valdivia? (Pista: una manera involucra group_by)
+**Todos los graficos deben tener titulos adecuados y un theme.**
 
-```{r ejer5 , eval=FALSE, echo=TRUE}
+Pregunta 1: ¿Cuál es uso de suelo que presenta mayor cobertura en la provincia de valdivia? (Pista: una manera involucra group_by y summarize, junto a la función sum())
+
+```{r ejer5 P1, eval=FALSE, echo=TRUE}
 # Pregunta 1:
-uso_val %>% glimpse()
 
-uso_val %>% 
-  mutate(uso = case_when(ID_USO == 1 ~ "Áreas Urbanas e Industriales",
-                         ID_USO == 2 ~ "Terrenos Agrícolas",
-                         ID_USO == 3 ~ "Praderas y Matorrales",
-                         ID_USO == 4 ~ "Bosques",
-                         ID_USO == 5 ~ "Humedales",
-                         ID_USO == 6 ~ "Áreas Desprovistas de Vegetación",
-                         ID_USO == 7 ~ "Nieves Eternas y Glaciares",
-                         ID_USO == 8 ~ "Cuerpos de Agua",
-                         ID_USO == 9 ~ "Áreas No Reconocidas")) %>% 
-  group_by(uso) %>% 
-  summarise(area = sum(SUPERF_HA)) %>% 
-  ggplot(aes(x = uso, y = area/10**3)) +
-  geom_col(aes(fill = uso)) +
-  labs(title = "Área por uso de suelo", 
-       subtitle = "en la provincia de Valdivia",
-       y = "Área en miles de ha",
-       fill = "Uso de Suelo") +
-  theme_minimal() +
-  theme(axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.title.x = element_blank())
 
 ```
 
+Pregunta 2: ¿Y la distribución de los tamaños de parche como es por uso? (Pista: ocupe geom_boxplot con outliers = F)
+
+```{r ejer5 P2, eval=FALSE, echo=TRUE}
+# Pregunta 2:
+
+```
+
+Pregunta 3: ¿Cuál es la cobertura porcentual de cada subuso de bosque? (Pista: antes que nada hay que filtrar por uso de bosque)
+
+```{r ejer5 P3, eval=FALSE, echo=TRUE}
+# Pregunta 3:
+
+```
+
+Pregunta 4: ¿Para bosques, en que combinación de cobertura y tipo forestal hay mayor número de parches? (Pista: ocupe geom_count())
+
+```{r ejer5 P4, eval=FALSE, echo=TRUE}
+# Pregunta 4:
+
+```
+
+**6)** Recree el siguiente grafico:
+
+![Logo R](https://www.r-project.org/logo/Rlogo.png)
+
+*Con width puede modificar el ancho de geom_jitter y geom_boxplot*
+
+```{r ejer6, eval=FALSE, echo=TRUE}
+library(palmerpenguins)
+penguins %>% glimpse()
+
+  
+
+```
+
+**Bonus** Al grafico anterior agregele un punto con la media.
+
+![Logo R](https://www.r-project.org/logo/Rlogo.png)
+
+```{r bonus, eval=FALSE, echo=TRUE}
 
 
-
-
-
-
-
-
-
-
-
+```
