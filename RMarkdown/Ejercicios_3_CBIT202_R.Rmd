@@ -99,8 +99,7 @@ penguins %>% ggplot(aes(???)) +
 
 ```
 
-
-**4)** En base al grafico realizado en el ejercicio 2 (pero solo con la reometria de puntos).  Separe el grafico en base a la isla en que fueron medidos los pinguinos y despues separelo en base a la isla y la especie de manera simultanea (vea facet_wrap() y facet_grid()). Tenga en cuenta que separar en este caso hace referencia a tener multiples paneles en el grafico. 
+**4)** En base al grafico realizado en el ejercicio 2 (pero solo con la reometria de puntos). Separe el grafico en base a la isla en que fueron medidos los pinguinos y despues separelo en base a la isla y la especie de manera simultanea (vea facet_wrap() y facet_grid()). Tenga en cuenta que separar en este caso hace referencia a tener multiples paneles en el grafico.
 
 ```{r Ejer4, eval=FALSE, echo=TRUE}
 # Desarrollo:
@@ -113,20 +112,55 @@ penguins %>% ggplot(aes(???)) +
 
 ```
 
-**5)** Corra el siguiente código para descargar los datos de uso de suelo para la región de los rios (catastro vegetacional de los ríos de CONAF), sin geometria. Junto con un archivo explicativo de las variables del catastro.
+**5)** Corra el siguiente código para descargar los datos de uso de suelo para la provincia de Valdivia (catastro vegetacional de los ríos de CONAF), sin geometria, en su wording directory. Junto con un archivo explicativo de las variables del catastro.
+
+Si este codigo le genera problemas a la hora de la descarga, puede ser debido al formato RMarkdown. Pegue el código en la consolo a corralo.
 
 ```{r uso_suelo , eval=FALSE, echo=TRUE}
+githubURL <- "https://raw.githubusercontent.com/CBIT202-18-Analisis-de-datos-geo/Ejercicios_CBIT202/main/archivos/uso_val.csv"
 
-library(sf)
+download.file(githubURL,"uso_val.csv")
 
-# Lee el archivo shapefile
-shapefile <- st_read("conuna_val.shp")
+uso_val <- read.csv("uso_val.csv")
+
+githubURL2 <- "https://raw.githubusercontent.com/CBIT202-18-Analisis-de-datos-geo/Ejercicios_CBIT202/main/archivos/ESTRUCTURA_BBDD_CATASTROS-1-1-1.pdf"
+
+download.file(githubURL2, "readme_uso_val.pdf", mode = "wb")
+file.exists("readme_uso_val.pdf")
 ```
 
-En base a este set de datos genere graficos que puedan responder las siguientes preguntas. Recuerde, existen mutiples respuestas correctas, pero a veces el camino más simple es el mejor.
+En base a este set de datos genere graficos que puedan responder las siguientes preguntas. Recuerde, existen mutiples respuestas correctas, pero el camino más simple suele ser el mejor. Tambien tome en cuenta que las variables que se encuentran como ID suelen tener menor errores que las que se encuentran como texto, puede ocupar tanto las variables de ID como las de texto.
+
+Utilice cuando sea necesario las funciones: select(), filter(), arrange(), mutate(), group_by() y summarize(). Ademas de otras.
+
+Pregunta 1: ¿Cuál es uso de suelo que presenta mayor cobertura en la provincia de valdivia? (Pista: una manera involucra group_by)
 
 ```{r ejer5 , eval=FALSE, echo=TRUE}
+# Pregunta 1:
+uso_val %>% glimpse()
 
+uso_val %>% 
+  mutate(uso = case_when(ID_USO == 1 ~ "Áreas Urbanas e Industriales",
+                         ID_USO == 2 ~ "Terrenos Agrícolas",
+                         ID_USO == 3 ~ "Praderas y Matorrales",
+                         ID_USO == 4 ~ "Bosques",
+                         ID_USO == 5 ~ "Humedales",
+                         ID_USO == 6 ~ "Áreas Desprovistas de Vegetación",
+                         ID_USO == 7 ~ "Nieves Eternas y Glaciares",
+                         ID_USO == 8 ~ "Cuerpos de Agua",
+                         ID_USO == 9 ~ "Áreas No Reconocidas")) %>% 
+  group_by(uso) %>% 
+  summarise(area = sum(SUPERF_HA)) %>% 
+  ggplot(aes(x = uso, y = area/10**3)) +
+  geom_col(aes(fill = uso)) +
+  labs(title = "Área por uso de suelo", 
+       subtitle = "en la provincia de Valdivia",
+       y = "Área en miles de ha",
+       fill = "Uso de Suelo") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_blank())
 
 ```
 
