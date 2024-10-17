@@ -1,0 +1,289 @@
+---
+title: "Ejercicios_4_CBIT202"
+author: "Joseba"
+date: "2024-10-03"
+output: pdf_document
+---
+
+# Ejercicios N°3: Datos Geoespaciales
+
+## Introducción al Análisis Geoespacial CBIT202-24
+
+La guía consta de **3** ejercicios de manejo y visualizaciones de datos Geoespaciales en R. Esta tarea deberá ser entregada en un pdf (que solo muestre los outputs del código (sin mensajes de advertencia), **y en RMarkdown**. Para esto explore el botton de "Modify Chunk Options" en la esquina superior derecha de cada chunk. Puede apoyarce de la cheat sheet de RMarkdown para este proposito.
+
+Además de otorgarle un nombre único a cada chunk, por ejemplo:
+
+```{r Primer Chunk}
+# Hola, me llamo primer chunk
+```
+
+El nombre de estos archivos debe ser: "Ejer4_apellido_nombre.Rmd". Recuerde reemplazar todas las partes con '#???' y '???' con su código, y/o trabaje en la zona de 'desarrollo'.
+
+Realice el desarrollo de estos ejercicios al interior del chunk correspondiente. Si necesita escribir, hágalo ocupando #; esto es recomendable para aclarar el funcionamiento de su código. Puede utilizar herramientas de inteligencia artificial para investigar sobre el funcionamiento de funciones o paquetes, pero resuelva las preguntas basándose en su propio conocimiento e investigación. Recuerde que puede ocupar ? o F1 para saber más información sobre las funciones, paquetes instalados y datos contenidos en R base.
+
+```{r Ejem, eval=FALSE, echo=TRUE}
+# Por ejemplo:
+
+# Funcion
+?mean()
+# Paquete
+?stats()
+# Datos
+?iris()
+
+```
+
+Para acceder a los atajos del teclado puede presionar Alt + Shift + K (en Windows/Linux), Option + Shift + K (en macOS) o Help \> Keyboard Shortcuts Help. No olvide que puede retroceder en cualquier cambio que realice con Ctrl + Z.
+
+## **Ejercicios (16pts):**
+
+***Indique su nombre:***
+
+```{r nombre, eval=FALSE, echo=TRUE}
+# Nombre alumno:
+
+```
+
+Los ejercicios de esta guía requieren del paquete “datos”, el cual contiene conjuntos de datos de distintos paquetes, incluyendo R base, traducidos al español, y del paquete tidyverse. Por favor, corra el siguiente código para cargarlos antes de continuar con la guía:
+
+```{r paquetes, eval=FALSE, echo=TRUE}
+library(tidyverse)
+
+library(sf) # paquete para trebajar con datos vectoriales
+library(rworldxtra) # datos vectoriales de los paises del mundo
+
+library(raster) # paquete para trebajar con datos raster
+
+library(geodata)
+```
+
+Para el manejo de datos vectoriales puede apollarce en:
+
+[sf cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/sf.pdf)
+
+### **1)**
+
+En base a los siguientes datos de los países del mundo responda mediante mapas las siguientes preguntas:
+
+Considete que:\
++ POP_EST = población estimada (estimado)\
++ GDP_MD_EST = Producto interno bruto en millones de dolares (estimado)
+
+*Los mapas deben considerar titulo y leyendas adecuadas*
+
+```{r}
+data("countriesHigh") # cargo datos del paquete rworlxtra
+?countriesHigh
+
+paises <- st_as_sf(countriesHigh)
+paises %>% view()
+```
+
+-   1.1) ¿Cuál es el país más poblado del mundo? (Muéstrelo con un gradiente de colores personalizado) **(1 pt)**
+
+*Pista: vea scale_fill_gradient()*
+
+```{r}
+# Desarrollo:
+
+
+```
+
+-   1.2) ¿Cuál es el país más poblado en cada continente? (Muéstrelo coloreando estos países con rojo y dejando los otros paises con fondo blanco) **(1 pt)**
+
+*Pista: una opción para determinar estos países involucra ocupar las funciónes as.data.frame, group_by, slice_max y ungroup. Y otra opción involucra arrange y distinct*
+
+```{r}
+# Desarrollo:
+?as.data.frame()
+?slice_max()
+?ungroup()
+
+
+```
+
+-   1.3) ¿Cuál es el producto interno bruto **per capita** por país? **(1 pt)**
+
+```{r}
+# Desarrollo:
+
+```
+
+-   1.4) ¿Cuáles países de latinoamerica se encuentras al sur de la linea del ecuador? ¿y cúal es el código iso de cada uno? **(1 pt)**
+
+*Pista: vea geom_text() con aes(geometry = geometry, label = ISO3) y stat = "sf_coordinates"*
+
+```{r}
+# Desarrollo:
+
+```
+
+### **2)**
+
+Descargue el siguiente archivo SHP del uso de suelo de CONAF para la provincia de Valparaíso. A este archivo ya se le han filtrado las geometrias validas.
+
+-   [Uso de suelo Valparaíso](https://drive.google.com/drive/folders/1NRNLEyasjGjt7Cu-IFXcJzvCCm5N_qv4?usp=sharing)
+
+Si quiere explorar los datos de uso de suelo para otras partes de Chile visite el siguiente enlace:
+
+-   [Uso de suelo CONAF](https://sit.conaf.cl/)
+
+Adicionalmete, el siguiente código descarga un pdf de apoyo en su working directory, en el que expica las variables contenidas en los datos.
+
+```{r}
+githubURL2 <- "https://raw.githubusercontent.com/CBIT202-18-Analisis-de-datos-geo/Ejercicios_CBIT202/main/archivos/ESTRUCTURA_BBDD_CATASTROS-1-1-1.pdf"
+
+download.file(githubURL2, "readme_uso_val.pdf", mode = "wb")
+file.exists("readme_uso_val.pdf")
+```
+
+También en el siguiente link descarge: "Base de datos histórica de cicatrices de incendios chilenos - 1. Resumen".
+
+-   [Incendios](https://plataformadedatos.cl/catalog/categories/HAZARD/Incendio%20forestal/9C53CCC53F1B6E9)
+
+Y, por último, descargue la capa de provincias de Chile, con gadm() del paquete geodata. Para las provincias ocupe level = 2.
+
+-   2.0) Cargue las capas **(1 pts)**:\
+    *Si trabaja en windows recuerde remplazar los de su ruta por / o \\*
+
+```{r}
+# st_read carga archivos shp
+uso_val <- sf::st_read('mi_direccion/uso_val.shp') %>% dplyr::select(ID, ID_USO, ID_SUBUSO, geometry)
+
+incendios <- sf::st_read('mi_direccion/FireScar_CL_Summary_1985-2018.shp')
+
+provincias <- st_as_sf(geodata::gadm(country = "CHL", level = 2, path = tempdir()))
+
+```
+
+En base a estos datos genere los siguientes mapas y analisis:
+
+-   2.1) Vea el CRS de las capas cargadas y transfórmelos a WGS 84 (EPSG:4326), con st_transform(). Después, filtre la capa de provincias para solo tener la provincia de Valparaíso. Posteriormente, vea la intersección entre esta capa y el objeto rectángulo (para dejar solo las tierras continentales), con st_intersection(). Tenga en cuenta que ambas capas deben tener el mismo CRS y que la provincia de Valparaíso tiene una geometría inválida que pueden ser correjidas con la función st_make_valid().
+
+Muestre además su resultado en un mapa mostrando la provincia de Valparaíso (la parte continental) coloreada, junto a las otras provincias que caen dentro del objeto rectángulo. **(2 pts)**
+
+```{r}
+# Desarrollo:
+st_crs(uso_val)
+st_crs(incendios)
+st_crs(provincias)
+
+```
+
+```{r}
+# Desarrollo:
+rectangulo <- st_as_sfc(st_bbox(c(xmin = -70, ymin = -32, xmax = -72, ymax = -34), crs = 4326))
+
+
+```
+
+-   2.2) En base al objeto de la provincia de Valparaíso generado en el punto anterior, vea la intersección de la capa de incendios con esta, generando alguna ayuda visual para saber qué incendios son más antiguos.
+
+Y otro mapa que muestre cuáles fueron más grandes. **(2 pts)**
+
+```{r}
+# Desarrollo:
+
+```
+
+-   2.3) Disuelva la capa de uso de suelo en base al ID del uso (group_by(), summarise() y st_union()). Antes de esto, utilice st_make_valid() para evitar cualquier posible error por problemas de topología en la capa.
+
+*Puede tomar un tiempo el proceso de union. Si el computo es demaciado para su computador contartarce con el ayudante*
+
+Además, cree una nueva columna de texto para uso de suelo basada en ID_USO (mutate() con case_when()); para esto, consulte el PDF de apoyo. Muestre la capa disuelta en un mapa, diferenciando cada uso por color. **(2 pts)**
+
+```{r}
+# Desarrollo:
+
+```
+
+-   2.4) Muestre en qué coberturas se han generado los incendios de las 3 temporadas más recientes de los datos de manera visual (haga un gráfico con ambas capas). **(1 pts)**
+
+```{r}
+# Desarrollo:
+  
+```
+
+-   2.5) Genere los objetos uso_val_union y incendios_val, con la capa disuelta de uso de suelo para la provincia de Valparaíso y los incendios para dicha provincia respectivamente, ambas capas en el sistema de coordenadas WGS 84. Y escriba un pequeña explicación de que realiza cada linea del siguiente código. Por último, dé una pequeña explicación o comentario sobre lo visto en el gráfico. **(1 pts)**
+
+```{r}
+ 
+uso_val_union <- '???'
+incendios_val <- '???'
+
+# Explicación:
+uso_val_union_UTM <- st_transform(uso_val_union, crs = 32719)
+incendios_val_UTM <- st_transform(incendios_val, crs = 32719)
+
+# Explicación:
+uso_val_union_UTM$area_ha <- as.numeric(st_area(uso_val_union_UTM))*10^4
+
+# Explicación:
+interseccion <- st_intersects(uso_val_union_UTM, incendios_val_UTM)
+
+# Explicación:
+conteo <- sapply(interseccion, length)
+
+# Explicación: 
+uso_val_union_UTM$conteo <- conteo_puntos
+
+# Explicación:
+uso_val_union_UTM <- uso_val_union_UTM %>% mutate(conteo_ha = conteo/area_ha)
+
+
+uso_val_union_UTM %>% ggplot() +
+  geom_sf(data = uso_val_union_UTM, aes(fill = conteo_ha, color = conteo_ha),
+          show.legend = c(fill = T, color = F)) +
+  scale_fill_gradient(low = "black",high = "red")+
+  scale_color_gradient(low = "black",high = "red")
+
+# Comentario sobre el gráfico:
+
+```
+
+### **3)**
+
+Para este ejercicio es requerido el paquete geodata, instalelo.
+
+```{r}
+# install.packages('geodata')
+library(geodata)
+```
+
+Este paquete contiene una función que permite descargar las variables bioclimáticas de WorldClim. Esto se realiza en el siguiente chunk, que da como resultado un SpatRaster con 4 bandas, cada una de ellas una variable bioclimática distinta.
+
+```{r}
+Bioclim <- worldclim_country(c("Chile"), var = c("bio"), res = 0.5,
+    path = getwd()) 
+
+names(Bioclim) <- sapply(strsplit(names(Bioclim), split = "30s_", fixed = TRUE),
+    function(x) (x[2]))
+
+names(Bioclim) <- sapply(gsub("_", "", names(Bioclim)), function(x) (x))
+
+Bioclim <- subset(Bioclim, c("bio2",'bio5', 'bio6', "bio7"))
+
+plot(Bioclim)
+```
+
+Corte esta capa en base al objeto provincia creado en el ejercicio anterior ocupando la función crop() y despues enmascare en base a la misma capa vectorial con mask(). Muestre sus resultado en un gráfico con plot(). (**1 pt**)
+
+*Vea que ambas capas tengan la misma proyección (crs)*
+
+```{r}
+# Desarrollo
+
+```
+
+Si visita su paguina, verá una explicación de cada una de las variables:
+
+-   [WorldClim](https://www.worldclim.org/data/bioclim.html)
+
+Algunas de estas variables se contruyen en base a otras. Vea cuales son y cree estas variables en base a las contenidas en Bioclim. Y gráfiquelas usando ggplot y scale_fill_viridis_c(). (**2 pts**)
+
+```{r}
+# Desarrollo:
+
+
+
+```
